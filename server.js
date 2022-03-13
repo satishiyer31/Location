@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', api);
 
 app.use(cors({
-  origin: 'https://z3nsatishiyer.zendesk.com'
+  origin: '*' //'https://z3nsatishiyer.zendesk.com'
 }));
 
 app.listen(PORT, () =>
