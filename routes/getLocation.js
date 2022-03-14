@@ -8,12 +8,19 @@ location.get('/', (req, res) => {
 });
 
 location.get('/:id', (req, res) => {
+ try{
   readFromFile('./db/location.json').then((data) => {
-    const result = data.filter(loc => loc.org_id==req.params.id);
-
-    res.json(JSON.parse(result))
+    
+    data = JSON.parse(data);
+     const result = data.filter(loc => loc.org_id==req.params.id);
+    
+    res.json(result)
   
   });
+ }
+  catch (err){
+    res.status(500).json(err);
+  }
 });
 
 
